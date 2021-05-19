@@ -1,4 +1,4 @@
-# This is my repository for code used during the analysis of data for my PhD - below are explanations for what each file contains
+# This is my repository for code used during the analysis of data for my PhD - below are explanations for what each file contains:
 
 # columnconverter.R - a very basis script that converts columns in a dataframe to another data type (e.g character to numeric)
 # correlationplots.R - another basic script that creates a correlation plot that identifies statistically significant correlations between variables in a dataframe
