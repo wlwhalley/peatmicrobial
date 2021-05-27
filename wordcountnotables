@@ -1,0 +1,32 @@
+' This is a VBA macro for word, that gives the word count excluding data tables. Press alt-F11, click "normal"
+' then click "insert" then "module", copy and paste it and click "run"
+
+Sub ExcludeTableAndCaptionWordsFromWordCount()
+  Dim objTable As Table
+  Dim objParagraph As Paragraph
+  Dim objDoc As Document
+  Dim nTableWords As Integer, nDocWords As Integer, nWordCount As Integer, nCaptionWords As Integer
+ 
+  Set objDoc = ActiveDocument
+  nTableWords = 0
+  nCaptionWords = 0
+  nDocWords = ActiveDocument.ComputeStatistics(wdStatisticWords)
+ 
+  With objDoc
+    For Each objTable In .Tables
+      nTableWords = nTableWords + objTable.Range.ComputeStatistics(wdStatisticWords)
+    Next objTable
+  End With
+ 
+  With objDoc
+    For Each objParagraph In .Paragraphs
+      If objParagraph.Range.Style = "Caption" Then
+        nCaptionWords = nCaptionWords + objParagraph.Range.ComputeStatistics(wdStatisticWords)
+      End If
+    Next objParagraph
+  End With
+ 
+  nWordCount = nDocWords - nTableWords - nCaptionWords
+ 
+  MsgBox ("There are " & nWordCount & " main text words in this document." & vbCr & "The following items are excluded from word count: " & vbCr & "Total words in tables: " & nTableWords & vbCr & "Total caption words: " & nCaptionWords)
+End Sub
