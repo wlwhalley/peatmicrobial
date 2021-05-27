@@ -7,3 +7,4 @@
 ### **otuclustering.R** - a script that clusters ASVs identified by DADA2 in a phyloseq object by sequence similarity (default 97%). Requires speedyseq, DECIPHER, phyloseq and Biostrings
 ### **willburndbRDA.R** - A script which performs a distance-based redundancy analysis on microbial data stored in a phyloseq object. 
 ### **willburnphyloseq.R** - a basic script that manipulates microbial data in phyloseq, including filtering etc but also PERMANOVA and a pairwise PERMANOVA
+### wordcountnottables - an MS Word macro that gives a wordcount excluding data tables
